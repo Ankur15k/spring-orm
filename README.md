@@ -1,191 +1,106 @@
-# StudentHub-SpringORM
+# Spring ORM Student Management System
 
-## Overview
-
-StudentHub-SpringORM is a console-based Student Management System built using Java, Spring Framework, Spring ORM, Hibernate, Maven, and MySQL. The application demonstrates complete CRUD (Create, Read, Update, Delete) operations while following a layered architecture using the DAO design pattern.
-
-The project focuses on understanding Spring ORM integration with Hibernate, dependency injection, bean management, and database persistence.
-
----
+A console-based Student Management System built using **Java and Spring ORM**. The application demonstrates Spring's IoC container, DAO pattern, and CRUD operations for managing student records.
 
 ## Features
 
-- Create a new student record
-- View all students
-- Search a student by ID
-- Update existing student details
-- Delete a student record
-- Persistent storage using MySQL
-- Layered architecture using DAO Pattern
-- Spring Dependency Injection
-- HibernateTemplate for ORM operations
+- Add student
+- Display all students
+- Find student by ID
+- Update student details
+- Delete student
+- Console-based interactive menu
+- Spring XML-based configuration
+- DAO-based database operations
 
----
+## Technologies Used
 
-## Tech Stack
+- Java
+- Spring Framework
+- Spring ORM
+- Spring IoC / Dependency Injection
+- XML Configuration
+- DAO Pattern
+- Maven
 
-| Technology | Version |
-|------------|---------|
-| Java | 21 |
-| Spring Framework | 5.x |
-| Spring ORM | 5.x |
-| Hibernate | 5.x |
-| Maven | Latest |
-| MySQL | 8.x |
-| JDBC | Java Database Connectivity |
-| XML Configuration | Spring Bean Configuration |
+## Architecture
 
----
-
-## Project Architecture
-
+```text
+Console
+   ↓
+App.java
+   ↓
+StudentDao
+   ↓
+Spring ORM / Persistence
+   ↓
+Database
 ```
-                  User
-                    │
-                    ▼
-          Console Application
-                    │
-                    ▼
-                App.java
-                    │
-                    ▼
-              Student DAO
-                    │
-                    ▼
-          HibernateTemplate
-                    │
-                    ▼
-               Hibernate
-                    │
-                    ▼
-             MySQL Database
-```
-
----
 
 ## Project Structure
 
-```
-StudentHub-SpringORM
-│
-├── src
-│   ├── main
-│   │   ├── java
-│   │   │   ├── entity
-│   │   │   ├── dao
-│   │   │   └── App.java
-│   │   │
-│   │   └── resources
-│   │       └── applicationContext.xml
-│
-├── pom.xml
-├── .gitignore
-└── README.md
+```text
+src/main/java/com/spring/orm
+├── App.java
+├── dao
+│   └── StudentDao.java
+└── entities
+    └── Student.java
+
+src/main/resources
+└── config.xml
 ```
 
----
+## How It Works
 
-## Database Schema
+The application loads the Spring configuration using `ApplicationContext`:
 
-**Database**
-
-```
-springorm
-```
-
-**Student Table**
-
-| Column | Data Type |
-|----------|-----------|
-| id | INT |
-| name | VARCHAR |
-| city | VARCHAR |
-
----
-
-## How to Run
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/<your-username>/StudentHub-SpringORM.git
+```java
+ApplicationContext context =
+        new ClassPathXmlApplicationContext("config.xml");
 ```
 
-### Navigate to the Project
+The `StudentDao` bean is retrieved from the Spring container and is used to perform CRUD operations.
 
-```bash
-cd StudentHub-SpringORM
-```
+## Console Menu
 
-### Create the Database
-
-```sql
-CREATE DATABASE springorm;
-```
-
-### Configure Database Credentials
-
-Update the database username and password in the Spring configuration file.
-
-### Build the Project
-
-```bash
-mvn clean install
-```
-
-### Run the Application
-
-Execute the `App.java` file.
-
----
-
-## Sample Menu
-
-```
+```text
 1. Add Student
 2. Display All Students
-3. Search Student
+3. Get Student Details
 4. Delete Student
 5. Update Student
 6. Exit
 ```
 
----
+## Getting Started
 
-## Concepts Covered
+### Prerequisites
+
+- Java JDK
+- Maven
+- Configured database
+
+### Run
+
+Clone the repository and run the `App.java` main class.
+
+The application will start with an interactive console menu.
+
+## Concepts Demonstrated
 
 - Spring IoC Container
 - Dependency Injection
 - Spring ORM
-- Hibernate ORM
-- HibernateTemplate
 - DAO Pattern
-- XML Bean Configuration
-- Maven Dependency Management
 - CRUD Operations
-- MySQL Integration
-- Layered Architecture
+- XML-based Spring Configuration
+- Exception Handling
 
----
 
-## Future Enhancements
-
-- Spring MVC
-- Spring Boot
-- REST APIs
-- Spring Security with JWT
-- Bean Validation
-- Docker
-- Unit Testing
-- Logging
-- Microservices
-
----
 
 ## Author
 
 **Ankur Gautam**
 
-B.Tech Computer Science and Engineering
-
-Aspiring Java Backend Developer
+GitHub: [@ankur15k](https://github.com/ankur15k)
